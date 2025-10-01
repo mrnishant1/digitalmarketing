@@ -1,0 +1,37 @@
+.wave-container span{
+    color: red;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-duration: 2s;
+    transition: transform 2s ease-in-out infinite alternate;
+}
+
+/* Works on Chrome, Safari, Edge */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Works on Firefox */
+.hide-scrollbar {
+  scrollbar-width: none; /* hide scrollbar, keep functionality */
+  -ms-overflow-style: none; /* for old IE/Edge */
+}
+
+.splittext{
+  font-size: 15em;
+  line-height: 1; /* critical */
+
+}
+
+.texttop {
+  clip-path: inset(0 0 48%);
+  position: absolute;
+  top: 0;
+
+}
+
+.textbottom {
+  clip-path: inset(50% 0 0);
+   position: absolute;
+  top: 0;
+ 
+}
