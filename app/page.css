@@ -35,3 +35,9 @@
   top: 0;
  
 }
+
+.cartext{
+  clip-path: inset(0 10% 0);
+}
+
+
