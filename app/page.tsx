@@ -33,10 +33,11 @@ export default function App() {
         scroll_X: window.scrollY,
         scroll_Y: window.scrollY,
         scrollPercentageX:
-          window.scrollX /
-          (document.documentElement.scrollHeight - window.innerHeight),
+          (window.scrollX * 100) /
+          (document.documentElement.scrollWidth - window.innerWidth),
+
         scrollPercentageY:
-          window.scrollY /
+          (window.scrollY * 100) /
           (document.documentElement.scrollHeight - window.innerHeight),
       });
     }
@@ -63,9 +64,7 @@ export default function App() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => (
-      window.removeEventListener("scroll", handleScroll)
-    );
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -80,17 +79,12 @@ export default function App() {
   return (
     <div className="horizontal_section flex flex-col w-[100svw] h-[300svh] bg-[#4D7C8A]   relative top-0 left-0">
       {/* Page 1 */}
-      <div className="relative w-[100svw] h-[100svh] overflow-hidden">
-        <HomePage/>
+      <div className="w-[100svw] h-[100svh]">
+        <HomePage />
       </div>
-
-    
 
       {/* Page 2---------------- */}
       <TextHalfAnimation page2text={page2text} dims={dims} />
-
-      {/* Page 3 */}
-      <div className="h-[100svh]"></div>
     </div>
   );
 }
