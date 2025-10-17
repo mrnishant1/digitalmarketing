@@ -1,90 +1,51 @@
-"use client";
-import "./page.css";
-import { useEffect, useRef, useState } from "react";
-import TextHalfAnimation from "./SplitHalfAnimation";
-import HomePage from "./heropage";
+"use client"
+import TextHalfAnimation from "./components/SplitHalfAnimation";
+import HomePage from "./components/heropage";
+import Image from "next/image";
+import Page3 from "./components/page3";
+import Page4 from "./components/page4";
+import Page5 from "./components/page5";
 
 export default function App() {
-  const page2text = ["Your Brand", "Your Growth", "Our Way", "Let's Chat"];
-  const [dims, setDims] = useState<{
-    w: number;
-    h: number;
-    scroll_X: number;
-    scroll_Y: number;
-    scrollPercentageX: number;
-    scrollPercentageY: number;
-  }>({
-    w: 1,
-    h: 1,
-    scroll_X: 0,
-    scroll_Y: 0,
-    scrollPercentageX: 0,
-    scrollPercentageY: 0,
-  });
-  // const mask = useRef()
-  const car = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let ticking = false;
-    if (typeof window !== "undefined") {
-      setDims({
-        w: window.innerWidth,
-        h: window.innerHeight,
-        scroll_X: window.scrollY,
-        scroll_Y: window.scrollY,
-        scrollPercentageX:
-          (window.scrollX * 100) /
-          (document.documentElement.scrollWidth - window.innerWidth),
-
-        scrollPercentageY:
-          (window.scrollY * 100) /
-          (document.documentElement.scrollHeight - window.innerHeight),
-      });
-    }
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setDims((prev) => ({
-            ...prev,
-            scroll_X: window.scrollX,
-            scroll_Y: window.scrollY,
-            scrollPercentageX:
-              (window.scrollX /
-                (document.documentElement.scrollHeight - window.innerHeight)) *
-              100,
-            scrollPercentageY:
-              (window.scrollY /
-                (document.documentElement.scrollHeight - window.innerHeight)) *
-              100,
-          }));
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (!car.current) return;
-    // car.current.style.setProperty("transform","translate(1000px, 00px)")
-    const img = car.current.querySelector("img");
-    if (img) {
-      img.style.transform = "translate(1000px, 0px)";
-    }
-  }, []);
+  const page2text = ["Let's Chat", "Our Way", "Your Growth", "Your Brand"];
 
   return (
-    <div className="horizontal_section flex flex-col w-[100svw] h-[300svh] bg-[#4D7C8A]   relative top-0 left-0">
+    <div className="horizontal_section flex flex-col w-[100svw] bg-[#3A3735]   relative top-0 left-0">
       {/* Page 1 */}
-      <div className="w-[100svw] h-[100svh]">
+      <div className="w-[100svw] h-[100svh] overflow-hidden">
         <HomePage />
       </div>
 
       {/* Page 2---------------- */}
-      <TextHalfAnimation page2text={page2text} dims={dims} />
+      <div className="w-[100svw] h-[300svh] flex flex-col sticky">
+        <TextHalfAnimation
+          words={page2text}
+          textsize={150}
+          triggerpoint={10}
+          stepsize={15}
+          
+        />
+      </div>
+
+      <div className="w-[100vw] h-[70vh]  flex justify-center items-center relative ">
+        <Page3/>
+      </div>
+
+      <div className="h-[40vh] w-[100vw] text-6xl font-bold text-white flex flex-col justify-center items-center">
+        <h1>How NEXUS drives word-of-mouth</h1>
+        <h1>
+         commerce at scale
+        </h1>
+      </div>
+
+      <div className="relative flex w-[100vw] h-[300vh]">
+        <Page4/>
+      </div>
+
+      <div className="w-[100%] h-[100%]">
+        <Page5/>
+      </div>
+
     </div>
   );
 }

@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface');
+
+	.abril-fatface-family {
+		font-family: "Abril Fatface", system-ui;
+	}
+
+body{
+  font-family: 'Abril Fatface';
+  }
+
 .wave-container span{
     color: red;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -17,7 +27,7 @@
 }
 
 .splittext{
-  font-size: 15em;
+  /* font-size: 4em; */
   line-height: 1; /* critical */
 
 }
@@ -39,5 +49,38 @@
 .cartext{
   clip-path: inset(0 10% 0);
 }
+
+.whatwedo{
+  clip-path: circle(30% at 50% 0);
+  
+}
+
+@keyframes floatX {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px); /* adjust distance as you like */
+  }
+}
+
+.float-x {
+  animation: floatX 3s ease-in-out infinite;
+}
+
+@keyframes floatY {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* up and down motion */
+  }
+}
+
+.float-y {
+  animation: floatY 3s ease-in-out infinite;
+}
+
+
 
 
