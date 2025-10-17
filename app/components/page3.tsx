@@ -19,7 +19,7 @@ export default function Page3() {
                             <div className="text-center  ">
                                 <h2 className="text-6xl font-bold text-black mb-4">72%</h2>
                                 <h3 className="text-slate-800 text-xl font-semibold mb-3">Users Trust</h3>
-                                <p className="text-black text-2xl font-bold">
+                                <p className="text-[#2a3e40] text-2xl font-bold">
                                     Reddit/Other social media, for "getting information".
                                 </p>
                             </div>
@@ -33,7 +33,7 @@ export default function Page3() {
                             <div className="text-center ">
                                 <h2 className="text-6xl font-bold text-black mb-4">4X</h2>
                                 <h3 className="text-slate-800 text-xl font-semibold mb-3">ROI</h3>
-                                <p className="text-black text-2xl font-bold">
+                                <p className="text-[#2a3e40] text-2xl font-bold">
                                     For every $1 invested.
                                 </p>
                             </div>
@@ -47,7 +47,7 @@ export default function Page3() {
                             <div className="text-center ">
                                 <h2 className="text-6xl font-bold text-black mb-4">73%</h2>
                                 <h3 className="text-slate-800 text-xl font-semibold mb-3">Conversion Impact</h3>
-                                <p className="text-black text-2xl font-bold">
+                                <p className="text-[#2a3e40] text-2xl font-bold">
                                     In e-commerce, word-of-mouth has conversion rates 2x to 2.5x higher.
                                 </p>
                             </div>

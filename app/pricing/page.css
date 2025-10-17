@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface');
+
+	.abril-fatface-family {
+		font-family: "Abril Fatface", system-ui;
+	}
+
+body{
+    font-family: 'Abril Fatface';
+}

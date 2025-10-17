@@ -4,6 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+html { scroll-behavior: smooth; }
 
 /* Works on Chrome, Safari, Edge */
 /* *::-webkit-scrollbar {
@@ -18,8 +19,7 @@
 
 
 *{
-  /* margin: 0; */
-  /* padding: 0; */
+
   box-sizing: border-box;
   max-width: 100%;
   

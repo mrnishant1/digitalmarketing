@@ -45,7 +45,7 @@ export default function Page4() {
         <div className="h-[100vh] flex flex-col text-white items-center justify-center p-8">
           <div className="w-[400px] ">
             <h1 className="text-7xl">Can't reach to right Users.</h1>
-            <p className="text-2xl font-sans leading-relaxed text-gray-300">
+            <p className="text-2xl font-sans leading-relaxed text-[#2a3e40]">
               Right now, thousands of potential customers are actively searching
               for solutions you offer. While your competitors are capturing
               these opportunities.{" "}
@@ -67,7 +67,7 @@ export default function Page4() {
             </div>
             <br />
             <p className="text-4xl">We Work 24/7, So You Don't Have To...</p>
-            <p className="text-2xl font-sans leading-relaxed text-gray-300">
+            <p className="text-2xl font-sans leading-relaxed text-[#2a3e40]">
               Our dedicated team monitors Unfiltered market (Reddit) and identify
               <b className="text-3xl"> Potential customers</b> actively seeking
               products like yours. Through strategic engagement and authentic
@@ -80,7 +80,7 @@ export default function Page4() {
         <div className="h-[100vh] flex flex-col text-white items-center justify-center p-8">
           <div className="w-[400px] ">
             <h1 className="text-7xl">How We’re Different from Reddit Ads...</h1>
-            <p className="text-2xl font-sans leading-relaxed text-gray-300">
+            <p className="text-2xl font-sans leading-relaxed text-[#2a3e40]">
               Create <b className="text-3xl">Direct impact on targeted user</b>{" "}
               who are searching for solution that you provides,
               <br /> <b className="text-3xl">Unlike Reddit ads</b> that users
@@ -100,7 +100,7 @@ function RightBoxPage1(scrollPercentageY: number) {
       <div
         className="flex flex-col relative top-0 h-[100%] w-full justify-end items-center"
         style={{
-          opacity: scrollPercentageY < 57 || scrollPercentageY > 70 ? 0 : 1,
+          opacity: scrollPercentageY < 26 || scrollPercentageY > 40 ? 0 : 1,
           transition: "all",
           transitionDuration: "400ms",
         }}
@@ -116,7 +116,7 @@ function RightBoxPage1(scrollPercentageY: number) {
           <div
             className="subgroup top-0 right-0 z-[5] absolute rounded-2xl"
             style={
-              scrollPercentageY >= 57
+              scrollPercentageY >= 26
                 ? {
                     transition: "all",
                     rotate: "30deg",
@@ -138,7 +138,7 @@ function RightBoxPage1(scrollPercentageY: number) {
           <div
             className="subgroup top-0 left-0 z-[4] absolute rounded-2xl"
             style={
-              scrollPercentageY >= 57
+              scrollPercentageY >= 26
                 ? {
                     transition: "all",
                     rotate: "-30deg",
@@ -161,7 +161,7 @@ function RightBoxPage1(scrollPercentageY: number) {
           <div
             className="subgroup top-[10%] right-[25%] z-[5] absolute rounded-2xl"
             style={
-              scrollPercentageY >= 57
+              scrollPercentageY >= 26
                 ? {
                     transition: "all",
                     rotate: "5deg",
@@ -186,7 +186,7 @@ function RightBoxPage1(scrollPercentageY: number) {
         <div
           className="w-full h-[20px] bg-red-600"
           style={
-            scrollPercentageY > 62 && scrollPercentageY < 71
+            scrollPercentageY > 30 && scrollPercentageY < 40
               ? {
                   clipPath: "inset(0% 0% 0% 0%)",
                   transition: "all",
@@ -205,8 +205,8 @@ function RightBoxPage1(scrollPercentageY: number) {
         <div
           className="thebrand text-8xl text-black "
           style={{
-            opacity: scrollPercentageY < 71 ? 0.3 : 1,
-            scale: scrollPercentageY < 71 ? 1 : 1.5,
+            opacity: scrollPercentageY < 41 ? 0.3 : 1,
+            scale: scrollPercentageY < 41 ? 1 : 1.5,
             transition: "all",
             transitionDuration: "1s",
             zIndex: 50,
@@ -224,7 +224,7 @@ function RightBoxPage2(scrollPercentageY: number) {
     <div
       className="flex flex-col absolute top-0 h-[100%] w-full justify-center items-center "
       style={{
-        opacity: scrollPercentageY < 71 || scrollPercentageY > 83 ? 0 : 1,
+        opacity: scrollPercentageY < 41 || scrollPercentageY > 57 ? 0 : 1,
         transition: "all",
         transitionDuration: "400ms",
       }}
@@ -234,16 +234,16 @@ function RightBoxPage2(scrollPercentageY: number) {
         {/* Inside messages */}
         <div
           style={
-            scrollPercentageY >= 70
+            scrollPercentageY >= 40
               ? {
                   transform: `translateY(${
-                    scrollPercentageY >= 71
-                      ? `${-Math.max((scrollPercentageY - 70) * 10, 400)}px`
+                    scrollPercentageY >= 41
+                      ? `${-Math.max((scrollPercentageY - 44) * 10, 400)}px`
                       : "100px"
                   })`,
                   transition: "all",
                   transitionDuration: "1s",
-                  transitionDelay: `${scrollPercentageY < 71 ? "0s" : "2s"}`,
+                  transitionDelay: `${scrollPercentageY < 41 ? "0s" : "2s"}`,
                 }
               : { opacity: 0 }
           }
@@ -264,7 +264,7 @@ function RightBoxPage3(scrollPercentageY: number) {
     <div
       className="flex flex-row gap-0 absolute top-0 h-[100%] w-full justify-center items-center "
       style={{
-        opacity: scrollPercentageY < 85? 0 : 1,
+        opacity: scrollPercentageY <58? 0 : 1,
         transition: "all",
         transitionDuration: "400ms",
       }}
@@ -301,10 +301,10 @@ export function Messages(scrollPercentageY: number) {
     <div className="flex flex-col gap-2.5">
       <div
         style={{
-          transform: `translateY(${scrollPercentageY >= 71 ? 0 : 1000}px)`,
+          transform: `translateY(${scrollPercentageY >= 41 ? 0 : 1000}px)`,
           transition: "all",
           transitionDuration: "600ms",
-          opacity: scrollPercentageY >= 71 ? 1 : 0,
+          opacity: scrollPercentageY >= 41 ? 1 : 0,
         }}
       >
         <PostCard Text="Help me to find the product, what would be the best to go with?" />
@@ -312,22 +312,22 @@ export function Messages(scrollPercentageY: number) {
       <div
         className="w-full flex justify-end "
         style={{
-          transform: `translateY(${scrollPercentageY >= 71 ? 0 : 1000}px)`,
+          transform: `translateY(${scrollPercentageY >= 41 ? 0 : 1000}px)`,
           transition: "all",
           transitionDuration: "600ms",
-          transitionDelay: `${scrollPercentageY >= 71 ? 1 : 0}s`,
-          opacity: scrollPercentageY >= 71 ? 1 : 0,
+          transitionDelay: `${scrollPercentageY >= 41 ? 1 : 0}s`,
+          opacity: scrollPercentageY >= 41 ? 1 : 0,
         }}
       >
-        <ReplyCard reply="I think you would like this one, try this brand" />
+        <ReplyCard fontsize={15} reply="I think you would like this one, try this brand" />
       </div>
       <div
         style={{
-          transform: `translateY(${scrollPercentageY >= 71 ? 0 : 1000}px)`,
+          transform: `translateY(${scrollPercentageY >= 41 ? 0 : 1000}px)`,
           transition: "all",
           transitionDuration: "600ms",
-          transitionDelay: `${scrollPercentageY >= 71 ? 2 : 0}s`,
-          opacity: scrollPercentageY >= 71 ? 1 : 0,
+          transitionDelay: `${scrollPercentageY >= 41 ? 2 : 0}s`,
+          opacity: scrollPercentageY >= 41 ? 1 : 0,
         }}
       >
         <PostCard Text="That was great, thanks for the suggestion you gave me." />
@@ -335,14 +335,14 @@ export function Messages(scrollPercentageY: number) {
       <div
         className="w-full flex justify-end "
         style={{
-          transform: `translateY(${scrollPercentageY >= 71 ? 0 : 1000}px)`,
+          transform: `translateY(${scrollPercentageY >= 41 ? 0 : 1000}px)`,
           transition: "all",
           transitionDuration: "600ms",
-          transitionDelay: `${scrollPercentageY >= 71 ? 3 : 0}s`,
-          opacity: scrollPercentageY >= 71 ? 1 : 0,
+          transitionDelay: `${scrollPercentageY >= 41 ? 3 : 0}s`,
+          opacity: scrollPercentageY >= 41 ? 1 : 0,
         }}
       >
-        <ReplyCard reply="your most welcome!" />
+        <ReplyCard fontsize={15} reply="your most welcome!" />
       </div>
     </div>
   );
