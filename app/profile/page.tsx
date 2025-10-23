@@ -54,7 +54,7 @@ const ProfileSection = () => {
     };
 
     checkUserExists();
-  }, [currentUser, firebaseDB]);
+  }, [currentUser]);
 
   if (currentUser === null) return <Loading text="Login" />;
   const email = currentUser.email || "N/A";

@@ -1,7 +1,5 @@
 import React from "react";
 import './loading.css'
-import { signinhandler } from "../signin/signInHandler";
-import { BsGoogle } from "react-icons/bs";
 
 const Loading = ({text}:{text:string}) => {
   return (

@@ -55,7 +55,7 @@ export function PostCardMini({Text}:{Text:string}) {
     </>
   );
 }
-export function ReplyCard({reply, fontsize}: {reply:string, fontsize?:number}) {
+export function ReplyCard({reply}: {reply:string}) {
   return (
     <>
       <div
