@@ -1,7 +1,6 @@
-"use client"
+"use client";
 import React from "react";
-import './page.css'
-import { HomeIcon } from "lucide-react";
+import "./page.css";
 import { GiReturnArrow } from "react-icons/gi";
 import { useRouter } from "next/navigation";
 
@@ -29,23 +28,31 @@ interface PricingItemProps {
 // --- Data for the Pricing Plans (Now Typed) ---
 const pricingPlans: PricingPlan[] = [
   {
-    title: "Freelance",
-    price: "29",
-    features: ["1 GB of space", "Support at $25/hour", "Limited cloud access"],
+    title: "Micro Pack",
+    price: "4.00",
+    features: ["Adds 100 Credits", "One-Time Purchase", "4.0¢ per Credit"],
     highlight: false,
     color: "bg-[#4c4665]",
   },
   {
-    title: "Business",
-    price: "59",
-    features: ["5 GB of space", "Support at $5/hour", "Full cloud access"],
-    highlight: true,
+    title: "Value Pack",
+    price: "15.00",
+    features: [
+      "Adds 500 Credits",
+      "One-Time Purchase",
+      "3.0¢ per Credit (Best Value)",
+    ],
+    highlight: false,
     color: "bg-[#4c4665]",
   },
   {
-    title: "Enterprise",
-    price: "99",
-    features: ["10 GB of space", "Support at $5/hour", "Full cloud access"],
+    title: "Bulk Pack",
+    price: "25.00",
+    features: [
+      "Adds 1000 Credits",
+      "One-Time Purchase",
+      "2.5¢ per Credit (Max Discount)",
+    ],
     highlight: false,
     color: "bg-[#4c4665]",
   },
@@ -111,19 +118,19 @@ const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
   // The 'group/item' class makes the whole card the parent for hover state
   return (
     <div
-      className={`pricing-item group/item flex flex-col items-stretch text-center flex-1 w-full max-w-xs md:max-w-md lg:max-w-[330px] shadow-xl rounded-2xl m-4 bg-white text-[#84697c] font-[Open_Sans] transition-all duration-300 ${itemClasses}`}
+      className={`pricing-item group/item flex flex-col hover:scale-[1.07] items-stretch text-center flex-1 w-full max-w-xs md:max-w-md lg:max-w-[330px] shadow-xl rounded-2xl m-4 bg-white text-[#84697c] font-[Open_Sans] transition-all duration-300 ${itemClasses}`}
     >
       {/* Pricing Decoration Area */}
       <div
-        className={`pricing-deco relative ${color} p-16 pt-24 rounded-t-2xl`}
+        className={`pricing-deco relative ${color} pb-[40%] pt-[5%] rounded-t-2xl`}
       >
         <WaveDecoration groupHoverClass={groupHoverClasses} />
 
         {/* Price */}
-        <div className="text-white mt-1 mb-1 leading-tight">
-          <span className="text-sm align-top"> $ </span>
+        <div className="text-[#241e2f] mt-1 mb-1 leading-tight">
+          <span className="text-sm align-top text-white"> $ </span>
           <span className="text-7xl font-bold">{price}</span>
-          <span className="text-sm pl-2  italic text-">/ mo</span>
+          {/* <span className="text-sm pl-2  italic text-">/ mo</span> */}
         </div>
 
         {/* Title */}
@@ -147,8 +154,9 @@ const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
       {/* Action Button */}
       <button
         className={`font-bold mx-12 my-8 py-3 px-6 text-white rounded-full transition-colors duration-300 ${buttonClasses} hover:shadow-lg`}
+        onClick={()=>console.log(features[0].split(" ")[1])}
       >
-        Choose plan
+        {features[0]}
       </button>
     </div>
   );
@@ -156,13 +164,18 @@ const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
 
 // --- Main App Component ---
 const App: React.FC = () => {
-    const router = useRouter();
+  const router = useRouter();
   return (
     <section
       className="min-h-screen bg-[#7ed6dfd9] text-gray-800 relative" // Original background color
     >
       <div className="text-center mb-16 px-4">
-        <div className="p-[20px] text-7xl absolute cursor-pointer active:scale-[0.95] " onClick={()=>router.push('/')}><GiReturnArrow/></div>
+        <div
+          className="p-[20px] text-7xl absolute cursor-pointer active:scale-[0.95] "
+          onClick={() => router.back()}
+        >
+          <GiReturnArrow />
+        </div>
         <h1 className="text-4xl md:text-7xl font- text-white">
           LeadZup Pricing Plans
         </h1>

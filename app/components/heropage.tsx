@@ -1,55 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Linkedin, Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
 import "./page.css";
-import { LiaReddit, LiaTelegram } from "react-icons/lia";
-import Conversation from "./conversation";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import Conversation from "./3dbackground/conversation";
+import Trialpage from "./trialpage";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { auth } from "../signin/firebaseconfig";
+import Navbar from "./navbar";
 
 export default function Homepage() {
-  const router = useRouter()
-  return (
-    <div className="min-h-screen w-[100svw] h-[100svh] text-white flex flex-col p-3.5">
-      <div className="flex w-full justify-between items-center bg-[#464242c2] rounded-2xl z-[100] ">
-        <div className="text-6xl w-full leading-tight flex font-sans font-bold pl-4">
-          LeadZup
-        </div>
-        {/* Nave Buttons */}
-        <div className="font-sans hidden pr-[10%] md:flex flex-row w-[90%] justify-end space-x-8 text-2xl ">
-          <Link
-            href="#howitworks"
-            className="hover:text-emerald-400 transition-colors hover:underline"
-          >
-            How We work
-          </Link>
-          {/* <Link
-            href="#"
-            className="hover:text-emerald-400 transition-colors hover:underline"
-          >
-            Other Services
-          </Link> */}
-          <Link
-            href="/pricing"
-            className="hover:text-emerald-400 transition-colors hover:underline"
-          >
-            Pricing
-          </Link>
-          {/* <a
-            href="#"
-            className="hover:text-emerald-400 transition-colors hover:underline"
-          >
-            About Us
-          </a> */}
-        </div>
-      </div>
+  const [visibility, setvisibility] = useState(true);
+  const [user, setuser] = useState<User | null>(null);
 
-      <div className="relative flex w-full h-full">
-        <div className="relative w-[100vw] h-[100svh] flex flex-col items-start p-x-[16] pt-2.5">
+  useEffect(() => {
+    console.log(
+      "useeffect ran in setiser heropage----------------------------"
+    );
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(currentUser);
+      setuser(currentUser);
+    });
+    return () => unsubscribe(); // cleanup
+  }, []); // run only once
+
+  return (
+    <div className="min-h-screen relative w-[100%] h-[100%] text-white flex flex-col p-3.5">
+      {/* Book trial */} {/* Get started button */}
+      <div className="w-[100vw] h-[100vh] absolute left-0 top-0 flex justify-center items-center">
+        {visibility && user === null && (
+          <Trialpage setvisibility={setvisibility} />
+        )}
+      </div>
+      {/* Nav bar */}
+      <Navbar user={user} />
+      {/* Home page */}
+      <div className="relative flex w-full h-full ">
+        <div className="relative w-[100%] h-[100%] flex flex-col items-start p-x-[16] pt-2.5">
           {/* Right side  Images*/}
-          <div className="absolute  right-[-100px] z-20">
-            {/* svg dashed line */}
-            <div className="float-x flex justify-center absolute left-[0%] bottom-[45%] items-center w-[100svw] h-[40svh] scale-[1.2]">
+          {/* svg dashed line */}
+          <>
+            {/* <div className="float-x flex justify-center absolute left-[0%] bottom-[45%] items-center w-[100svw] h-[40svh] scale-[1.2]">
               <svg
                 viewBox="0 0 500 400"
                 fill="none"
@@ -79,55 +69,30 @@ export default function Homepage() {
                   data-darkreader-inline-stroke=""
                 ></path>
               </svg>
-            </div>
+            </div> */}
+          </>
+
+          <div className="relative w-[100%] h-[100%] lg:h-[90%] lg-[80%] lg:absolute  right-[-100px] z-20">
             {/* Girl image section */}
             <Image
-              src={`/girloutpost.png`}
-              alt={`Image`}
-              width="630"
-              height="614"
-              className="z-[50]"
+              src="/girloutpost.png"
+              alt="Image"
+              fill
+              className="z-[50] object-contain w-full h-full relative right-0"
               style={{
                 filter: "drop-shadow(6px 2px 2px black)",
-                scale: 1,
+                objectPosition: "right", // sticks image to right
               }}
             />
             {/* reach */}
-            <Image
-              src={`/reach.png`}
-              alt={`Image`}
-              width="150"
-              height="250"
-              className="float-y z-indx-1 p-rlte zws-bnnr-img absolute left-[-20%] bottom-[45%] "
-              style={{
-                filter: ")",
-                boxShadow: "2px 2px 2px black",
-              }}
-            />
-            <div
-              className="float-y flex justify-center absolute left-[30%] bottom-[25%] items-center  text-xl rounded-[0px 10px 0px 10px] backdrop-blur-sm bg-[#83b1be57] z-indx-1 p-rlte zws-bnnr-img "
-              style={{
-                borderRadius: "10px",
-                boxShadow: "2px 2px 2px black",
-              }}
-            >
-              <div className="flex flex-col font-sans text-black text-xl  p-8">
-                <span>I think,</span>
-                <span>You would like!</span>
-                <span>this brand</span>
-              </div>
-            </div>
+
             <div
               className="float-x flex justify-center absolute left-[1%] bottom-[1%] items-center backdrop-blur-3xl text-xl rounded-[0px 10px 0px 10px]  z-indx-1 p-rlte zws-bnnr-img "
               style={{
                 borderRadius: "5px 5px 5px 5px",
                 boxShadow: "2px 2px 2px black",
               }}
-            >
-              <div className="flex font-sans text-[#000] text-xl ">
-                <LiaReddit /> Posted Successfully
-              </div>
-            </div>
+            ></div>
           </div>
           {/* conversation */}
           <Conversation />
@@ -135,49 +100,65 @@ export default function Homepage() {
           {/* Center Attraction */}
           <div className="w-[100%] h-[90%] flex flex-col gap-3.5  bg-[#708F92] rounded-4xl p-[5%] border-2 border-black">
             {/* Below LeadZup */}
-            <div className="w-[100%] h-[100%] relative flex rounded-4xl ">
+            <div className="w-full h-full relative flex flex-col md:flex-row items-center justify-between rounded-4xl p-6 md:p-8">
               {/* Left */}
-              <div className=" flex flex-col gap-3.5">
-                <div className="text-[#fff]">
-                  <h1 className="text-8xl ">We</h1>
-                  <h1 className="text-8xl ">Convert</h1>
-                  <h1 className="text-8xl ">Conversation</h1>
-                  <h1 className="text-8xl ">INTO Customers</h1>
+              <div className="flex flex-col gap-4 text-center md:text-left md:gap-5">
+                <div className="text-white">
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-8xl font-bold leading-tight">
+                    We
+                  </h1>
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-8xl font-bold leading-tight">
+                    Convert
+                  </h1>
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-8xl font-bold leading-tight">
+                    Conversation
+                  </h1>
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-8xl font-bold leading-tight">
+                    INTO Customers
+                  </h1>
 
-                  <p className="font-sans max-w-md text-xl leading-relaxed">
-                    Attract the customers not the crowd.
+                  <p className="font-sans text-base sm:text-lg md:text-xl max-w-md mx-auto md:mx-0 mt-4 text-[#eaeaea] leading-relaxed">
+                    Attract the customers, not the crowd.
                   </p>
                 </div>
-                <div>
-                  <a href="#contactform" className="text-2xl font-sans font-bold bg-[#4F5E60] rounded-4xl p-3.5 m-3.5 hover:scale-[1.05] active:scale-[0.95] transition-all duration-200">
+
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mt-6">
+                  <a
+                    href="#contactform"
+                    className="text-lg sm:text-2xl font-sans font-bold bg-[#4F5E60] rounded-3xl px-6 py-3 hover:scale-[1.05] active:scale-[0.95] transition-all duration-200"
+                  >
                     Contact Us
                   </a>
-                  <button className="text-2xl font-sans font-bold bg-[#4F5E60] rounded-4xl p-3.5 m-3.5 hover:scale-[1.05] active:scale-[0.95] transition-all duration-200">
-                    Book Free trial
+                  <button
+                    className="text-lg sm:text-2xl font-sans font-bold bg-[#4F5E60] rounded-3xl px-6 py-3 hover:scale-[1.05] active:scale-[0.95] transition-all duration-200"
+                    onClick={() => setvisibility(true)}
+                    style={{ visibility: user === null ? "visible" : "hidden" }}
+                  >
+                    Book Free Trial
                   </button>
                 </div>
-                {/* Social  */}
-                <div className="flex space-x-6 items-center z-[100]">
-                  <>
-                    <a
-                      href="#"
-                      className="p-2 hover:bg-[#433E3F] hover:text-white rounded-full transition-all duration-300"
-                    >
-                      <Linkedin className="w-5 h-5" />
-                    </a>
-                    <a
-                      href="#"
-                      className="p-2 hover:bg-[#433E3F] hover:text-white rounded-full transition-all duration-300"
-                    >
-                      <Facebook className="w-5 h-5" />
-                    </a>
-                    <a
-                      href="#"
-                      className="p-2 hover:bg-[#433E3F] hover:text-white rounded-full transition-all duration-300"
-                    >
-                      <Instagram className="w-5 h-5" />
-                    </a>
-                  </>
+
+                {/* Social */}
+                <div className="flex justify-center md:justify-start space-x-6 items-center mt-6 z-[100]">
+                  <a
+                    href="#"
+                    className="p-2 hover:bg-[#433E3F] hover:text-white rounded-full transition-all duration-300"
+                  >
+                    <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </a>
+                  <a
+                    href="#"
+                    className="p-2 hover:bg-[#433E3F] hover:text-white rounded-full transition-all duration-300"
+                  >
+                    <Facebook className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </a>
+                  <a
+                    href="#"
+                    className="p-2 hover:bg-[#433E3F] hover:text-white rounded-full transition-all duration-300"
+                  >
+                    <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </a>
                 </div>
               </div>
             </div>

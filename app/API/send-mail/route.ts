@@ -1,5 +1,4 @@
 import sendMail from "@/app/components/sendMail";
-import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest){
@@ -12,7 +11,7 @@ export async function POST(request: NextRequest){
         await sendMail(fullname,email,message);
         return NextResponse.json({ message: 'Email sent successfully!' }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ message: 'Failed to send email.' }, { status: 500 });
+        return NextResponse.json({ message: `Failed to send email ${error}` }, { status: 500 });
     }
 
 }

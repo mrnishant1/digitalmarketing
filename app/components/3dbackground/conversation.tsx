@@ -1,11 +1,11 @@
 import { PostCardMini, ReplyCard } from "@/components/ui/uicomponents";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./conversation.css";
 
 const Conversation = () => {
 
   return (
-    <div className="container absolute right-[400px] z-[21] bg-[#ffffff71] overflow-hidden border-2 border-teal-50 rounded-2xl">
+    <div className="container h-[150px] w-[120px] md:h-[150px] md:w-[120px] lg:h-[200px]  lg:w-[270px] text-[10px] absolute right-[400px] z-[21] bg-[#ffffff71] overflow-hidden border-2 border-teal-50 rounded-2xl">
       <div className="flex flex-col gap-2.5">
         <div>
           <PostCardMini

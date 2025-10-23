@@ -1,10 +1,9 @@
 import { useRef } from "react";
-import gsap, { Elastic } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useLayoutEffect, useState } from "react";
+import gsap from "gsap";
+import { useEffect, useState } from "react";
 type LookingProps = {
   text: string;
-  eye: Boolean|false,
+  eye: boolean|false,
   textsize: number
 };
 
@@ -28,7 +27,7 @@ export default function TextAnimation({ text, eye, textsize}: LookingProps) {
     scrollPercentageY: 0,
   });
   
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!looking.current) return;
     const lookingChar = gsap.utils.toArray(
       looking.current!.querySelectorAll("span")

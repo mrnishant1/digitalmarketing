@@ -1,5 +1,4 @@
 import { useState } from "react";
-import sendMail from "./sendMail";
 import axios from "axios";
 
 export default function Page6() {
