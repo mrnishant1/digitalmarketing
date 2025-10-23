@@ -14,7 +14,6 @@ const Conversation = () => {
         </div>
         <div className="w-full flex justify-end ">
           <ReplyCard
-            fontsize={14}
             reply="I think you would like this one, try this brand"
           />
         </div>

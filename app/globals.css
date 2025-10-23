@@ -7,15 +7,15 @@
 html { scroll-behavior: smooth; }
 
 /* Works on Chrome, Safari, Edge */
-/* *::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
-} */
+}
 
 /* Works on Firefox */
-/* * {
+* {
   scrollbar-width: none; 
   -ms-overflow-style: none;
-} */
+}
 
 
 *{

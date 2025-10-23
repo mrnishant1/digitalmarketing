@@ -33,7 +33,7 @@ export default function Page4() {
     };
   }, []);
 
-  if (window.innerWidth < 550) {
+  if (resizedScreen < 550) {
     return <>
     <div className="flex flex-col">
     <div className="h-[100vh] w-[100vw] relative  inset-0 bg-[#D6E8DC] z-30 flex items-center justify-center p-4.5 overflow-hidden">{RightBoxPage1(scrollPercentageY)}</div>
@@ -304,7 +304,6 @@ export function Messages(scrollPercentageY: number) {
         }}
       >
         <ReplyCard
-          fontsize={15}
           reply="I think you would like this one, try this brand"
         />
       </div>
@@ -329,7 +328,7 @@ export function Messages(scrollPercentageY: number) {
           opacity: scrollPercentageY >= 41 ? 1 : 0,
         }}
       >
-        <ReplyCard fontsize={15} reply="your most welcome!" />
+        <ReplyCard reply="your most welcome!" />
       </div>
     </div>
   );
