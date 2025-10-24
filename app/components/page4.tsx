@@ -11,7 +11,7 @@ export default function Page4() {
   console.log(scrollPercentageY);
 
   useEffect(() => {
-    setresizedScreen(window.innerWidth)
+    setresizedScreen(window.innerWidth);
     function handleScroll() {
       window.requestAnimationFrame(() => {
         const totalHeight =
@@ -35,50 +35,61 @@ export default function Page4() {
   }, []);
 
   if (resizedScreen < 550) {
-    return <>
-    <div className="flex flex-col">
-    <div className="h-[100vh] w-[100vw] relative  inset-0 bg-[#FDEAD5] z-30 flex items-center justify-center p-4.5 overflow-hidden">{RightBoxPage1(scrollPercentageY)}</div>
-    <div className="h-[100vh] w-[100vw] relative flex flex-col text-white items-center justify-center p-8"><LeftBoxPage1 /></div>
-    <div className="h-[120vh] w-[100vw] relative  inset-0 bg-[#FDEAD5] z-30 flex items-center justify-center p-4.5">{RightBoxPage2(scrollPercentageY)}</div>
-    <div className="h-[80vh] w-[100vw] relative flex flex-col text-white items-center justify-center p-8"><LeftBoxPage2 /></div>
-    <div className="h-[100vh] w-[100vw] relative  inset-0 bg-[#FDEAD5] z-30 flex items-center justify-center p-4.5">{RightBoxPage3(scrollPercentageY, resizedScreen)}</div>
-    <div className="h-[60vh] w-[100vw] relative  flex flex-col text-white items-center justify-center p-8"><LeftBoxPage3 /></div>
-    </div>
-    </>;
+    return (
+      <>
+        <div className="flex flex-col">
+          <div className="h-[100vh] w-[100vw] relative  inset-0 bg-[#FDEAD5] z-30 flex items-center justify-center p-4.5 overflow-hidden">
+            {RightBoxPage1(scrollPercentageY)}
+          </div>
+          <div className="h-[100vh] w-[100vw] relative flex flex-col text-white items-center justify-center p-8">
+            <LeftBoxPage1 />
+          </div>
+          <div className="h-[100vh] w-[100vw] relative  inset-0 bg-[#FDEAD5] z-30 flex items-center justify-center p-4.5">
+            {RightBoxPage3(scrollPercentageY, resizedScreen)}
+          </div>
+          <div className="h-[60vh] w-[100vw] relative  flex flex-col text-white items-center justify-center p-8">
+            <LeftBoxPage3 />
+          </div>
+          <div className="h-[120vh] w-[100vw] relative  inset-0 bg-[#FDEAD5] z-30 flex items-center justify-center p-4.5">
+            {RightBoxPage2(scrollPercentageY)}
+          </div>
+          <div className="h-[80vh] w-[100vw] relative flex flex-col text-white items-center justify-center p-8">
+            <LeftBoxPage2 />
+          </div>
+        </div>
+      </>
+    );
   }
 
   return (
     <>
- {/* Right side - scrolls normally */}
+      {/* Right side - scrolls normally */}
       <div className="w-[50%] h-[300vh] flex flex-col">
         <div className="h-[100vh] flex flex-col text-white items-center justify-center p-8">
-          <div className="w-[500px] ">
+          <div className="w-[500px] space-y-[5%] ">
             <LeftBoxPage1 />
           </div>
         </div>
-
         <div className="h-[100vh] flex flex-col text-white items-center justify-center p-8">
-          <div className="w-[500px] ">
-            <LeftBoxPage2 />
+          <div className="w-[500px] space-y-[5%]">
+            <LeftBoxPage3 />
           </div>
         </div>
         <div className="h-[100vh] flex flex-col text-white items-center justify-center p-8">
-          <div className="w-[500px] ">
-            <LeftBoxPage3/>
+          <div className="w-[500px] space-y-[5%] ">
+            <LeftBoxPage2 />
           </div>
         </div>
       </div>
 
       {/* Left side - stays fixed */}
       <div className="sticky top-0 h-[100vh] w-[50%] z-20 flex items-center justify-center">
-        <div className="absolute inset-0 bg-[#FDEAD5] z-30 flex items-center justify-center p-4.5">
+        <div className="absolute inset-0 bg-[#FDEAD5] z-30 flex items-center justify-center p-4.5 ">
           {RightBoxPage1(scrollPercentageY)}
-          {RightBoxPage2(scrollPercentageY)}
           {RightBoxPage3(scrollPercentageY, resizedScreen)}
+          {RightBoxPage2(scrollPercentageY)}
         </div>
       </div>
-
-     
     </>
   );
 }
@@ -91,7 +102,10 @@ function RightBoxPage1(scrollPercentageY: number) {
       <div
         className="flex flex-col relative top-0 h-[100%] w-full justify-end items-center "
         style={{
-          opacity: scrollPercentageY < triggerpoint || scrollPercentageY > lastPoint ? 0 : 1,
+          opacity:
+            scrollPercentageY < triggerpoint || scrollPercentageY > lastPoint
+              ? 0
+              : 1,
           transition: "all",
           transitionDuration: "400ms",
         }}
@@ -177,7 +191,8 @@ function RightBoxPage1(scrollPercentageY: number) {
         <div
           className="w-full h-[10px] md:h-[15px] lg:h-[20px] bg-red-600"
           style={
-            scrollPercentageY > triggerpoint +3 && scrollPercentageY < lastPoint
+            scrollPercentageY > triggerpoint + 3 &&
+            scrollPercentageY < lastPoint
               ? {
                   clipPath: "inset(0% 0% 0% 0%)",
                   transition: "all",
@@ -211,14 +226,17 @@ function RightBoxPage1(scrollPercentageY: number) {
 }
 
 function RightBoxPage2(scrollPercentageY: number) {
-  const triggerpoint = 51;
-  const lastpoint = 64;
+  const triggerpoint = 65;
+  const lastpoint = 80;
 
   return (
     <div
       className="flex flex-col absolute top-0 h-[100%] w-full justify-center items-center "
       style={{
-        opacity: scrollPercentageY < triggerpoint || scrollPercentageY > lastpoint ? 0 : 1,
+        opacity:
+          scrollPercentageY < triggerpoint || scrollPercentageY > lastpoint
+            ? 0
+            : 1,
         transition: "all",
         transitionDuration: "400ms",
       }}
@@ -231,13 +249,18 @@ function RightBoxPage2(scrollPercentageY: number) {
             scrollPercentageY >= triggerpoint
               ? {
                   transform: `translateY(${
-                    scrollPercentageY >= triggerpoint+2
-                      ? `${-Math.max((scrollPercentageY - triggerpoint) * 10, 400)}px`:
-                       "0px"
+                    scrollPercentageY >= triggerpoint + 2
+                      ? `${-Math.max(
+                          (scrollPercentageY - triggerpoint) * 10,
+                          400
+                        )}px`
+                      : "0px"
                   })`,
                   transition: "transform 0.6s ease",
                   // transitionDuration: "1s",
-                  transitionDelay: `${scrollPercentageY < triggerpoint ? "0s" : "2s"}`,
+                  transitionDelay: `${
+                    scrollPercentageY < triggerpoint ? "0s" : "2s"
+                  }`,
                 }
               : { opacity: 0 }
           }
@@ -253,12 +276,17 @@ function RightBoxPage2(scrollPercentageY: number) {
   );
 }
 
-function RightBoxPage3(scrollPercentageY: number,resizedscreen:number) {
+function RightBoxPage3(scrollPercentageY: number, resizedscreen: number) {
+  const startpoint = 51;
+  const lastpoint = 64;
   return (
     <div
       className="flex flex-row gap-0 absolute top-0 h-[100%] w-full justify-center items-center "
       style={{
-        opacity: scrollPercentageY < 65 ? 0 : 1,
+        opacity:
+          scrollPercentageY > startpoint && scrollPercentageY < lastpoint
+            ? 1
+            : 0,
         transition: "all",
         transitionDuration: "400ms",
       }}
@@ -268,12 +296,16 @@ function RightBoxPage3(scrollPercentageY: number,resizedscreen:number) {
       </div>
       <Image
         className="absolute z-0 "
-        alt="Users"
+        alt="Users stickman running away from spam ads"
         src={"/stickman.svg"}
-        width={"70"} 
+        width={"70"}
         height={"100"}
         style={{
-          transform: `${resizedscreen<550?"scaleX(-2.5) scaleY(2.5)":"scaleX(-4) scaleY(4)"}`,
+          transform: `${
+            resizedscreen < 550
+              ? "scaleX(-2.5) scaleY(2.5)"
+              : "scaleX(-4) scaleY(4)"
+          }`,
         }}
       />
       <div className="h-[80%] w-[10px] bg-black relative"></div>
@@ -288,12 +320,18 @@ function RightBoxPage3(scrollPercentageY: number,resizedscreen:number) {
   );
 }
 
-export function Messages(scrollPercentageY: number, triggerpoint: number, lastPoint:number) {
+export function Messages(
+  scrollPercentageY: number,
+  triggerpoint: number,
+  lastPoint: number
+) {
   return (
     <div className="flex flex-col gap-2.5">
       <div
         style={{
-          transform: `translateY(${scrollPercentageY >= triggerpoint ? 0 : 1000}px)`,
+          transform: `translateY(${
+            scrollPercentageY >= triggerpoint ? 0 : 1000
+          }px)`,
           transition: "all",
           transitionDuration: "600ms",
           opacity: scrollPercentageY >= triggerpoint ? 1 : 0,
@@ -304,20 +342,22 @@ export function Messages(scrollPercentageY: number, triggerpoint: number, lastPo
       <div
         className="w-full flex justify-end "
         style={{
-          transform: `translateY(${scrollPercentageY >= triggerpoint ? 0 : 1000}px)`,
+          transform: `translateY(${
+            scrollPercentageY >= triggerpoint ? 0 : 1000
+          }px)`,
           transition: "all",
           transitionDuration: "600ms",
           transitionDelay: `${scrollPercentageY >= triggerpoint ? 1 : 0}s`,
           opacity: scrollPercentageY >= triggerpoint ? 1 : 0,
         }}
       >
-        <ReplyCard
-          reply="I think you would like this one, try this brand"
-        />
+        <ReplyCard reply="I think you would like this one, try this brand" />
       </div>
       <div
         style={{
-          transform: `translateY(${scrollPercentageY >= triggerpoint ? 0 : 1000}px)`,
+          transform: `translateY(${
+            scrollPercentageY >= triggerpoint ? 0 : 1000
+          }px)`,
           transition: "all",
           transitionDuration: "600ms",
           transitionDelay: `${scrollPercentageY >= triggerpoint ? 2 : 0}s`,
@@ -329,7 +369,9 @@ export function Messages(scrollPercentageY: number, triggerpoint: number, lastPo
       <div
         className="w-full flex justify-end "
         style={{
-          transform: `translateY(${scrollPercentageY >= triggerpoint ? 0 : 1000}px)`,
+          transform: `translateY(${
+            scrollPercentageY >= triggerpoint ? 0 : 1000
+          }px)`,
           transition: "all",
           transitionDuration: "600ms",
           transitionDelay: `${scrollPercentageY >= triggerpoint ? 3 : 0}s`,
@@ -349,9 +391,9 @@ function LeftBoxPage1() {
         Thousands of users actively searching for products you offer.
       </h1>
       <p className="text-xs md:text-xl lg:text-2xl font-sans leading-relaxed text-[#2a3e40]">
-        <b className="text-2xl md:text-3xl lg:text-4xl">
-          Stop missing them. Be part of them—with Our precision
-          targeting and authentic engagement
+        <b className="text-2xl md:text-3xl lg:text-4xl ">
+          Stop missing them. Be part of them—with Our precision targeting and
+          authentic engagement
         </b>{" "}
         Partner with us to connect your brand to the right
         audience—authentically and at scale.

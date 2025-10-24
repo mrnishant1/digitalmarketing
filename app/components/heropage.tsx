@@ -43,7 +43,7 @@ export default function Homepage() {
             {/* Girl image section */}
             <Image
               src="/girloutpost.png"
-              alt="Image"
+              alt="Engaging to users who are in search of products and Posting personalised ads "
               fill
               className="z-[3] object-contain w-full h-full relative right-0"
               style={{
@@ -66,12 +66,12 @@ export default function Homepage() {
           <Conversation />
 
           {/* Center Attraction */}
-          <div className="w-[100%] h-[90%] flex flex-col gap-3.5   rounded-4xl p-[5%] border-black">
+          <div className="w-[100%] h-[90%] flex flex-col gap-3.5  bg-[#FDEAD5] border-2 border-white rounded-4xl p-[5%]">
             {/* Below LeadZup */}
             <div className="w-full h-full relative flex flex-col md:flex-row items-center justify-between rounded-4xl p-6 md:p-8">
               {/* Left */}
               <div className="flex flex-col gap-4 text-center md:text-left md:gap-5">
-                <div className="text-[#003566]">
+                <div className="text-[#003566] ">
                   <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-6xl font-bold leading-tight">
                     We Provide engagement
                   </h1>

@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');body{
+body{
     background-color: hsl(210, 5%, 12%);
 }
 
 .is-animate {
-        background: #ffb200;
+    background: #ffb200;
     box-sizing: border-box;
     font-size: 66px;
     display: -webkit-inline-box;
@@ -16,8 +16,9 @@
     color: #fff;
     padding: 9px;
     background: #ffb200;
-    font-family: 'Indie Flower', cursive;
+    font-family: cursive;
     box-shadow: 2px 2px 9px 2px;
+    font-display: swap;
 }
 .l{
   animation: letterspacing 1s infinite alternate cubic-bezier(.2, 0, 0, 1);

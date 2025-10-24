@@ -72,7 +72,7 @@ export default function Navbar({ user }:{user:User|null}) {
               onClick={() => setMenuOpen(false)}
             >
               <Image
-                alt="profile"
+                alt="profile photo of users"
                 src={user?.photoURL || "/"}
                 height={35}
                 width={35}
