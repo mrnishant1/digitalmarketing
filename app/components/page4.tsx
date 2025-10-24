@@ -52,18 +52,18 @@ export default function Page4() {
  {/* Right side - scrolls normally */}
       <div className="w-[50%] h-[300vh] flex flex-col">
         <div className="h-[100vh] flex flex-col text-white items-center justify-center p-8">
-          <div className="w-[400px] ">
+          <div className="w-[500px] ">
             <LeftBoxPage1 />
           </div>
         </div>
 
         <div className="h-[100vh] flex flex-col text-white items-center justify-center p-8">
-          <div className="w-[400px] ">
+          <div className="w-[500px] ">
             <LeftBoxPage2 />
           </div>
         </div>
         <div className="h-[100vh] flex flex-col text-white items-center justify-center p-8">
-          <div className="w-[400px] ">
+          <div className="w-[500px] ">
             <LeftBoxPage3/>
           </div>
         </div>
@@ -89,7 +89,7 @@ function RightBoxPage1(scrollPercentageY: number) {
   return (
     <>
       <div
-        className="flex flex-col relative top-0 h-[100%] w-full justify-end items-center"
+        className="flex flex-col relative top-0 h-[100%] w-full justify-end items-center "
         style={{
           opacity: scrollPercentageY < triggerpoint || scrollPercentageY > lastPoint ? 0 : 1,
           transition: "all",
@@ -105,7 +105,7 @@ function RightBoxPage1(scrollPercentageY: number) {
           }}
         >
           <div
-            className="subgroup top-0 right-0 z-[5] absolute rounded-2xl"
+            className="subgroup top-0 right-[70px] z-[5] absolute rounded-2xl"
             style={
               scrollPercentageY >= triggerpoint
                 ? {
@@ -127,7 +127,7 @@ function RightBoxPage1(scrollPercentageY: number) {
             <PostCard Text="Help me to find the product, what would be the best to go with?" />
           </div>
           <div
-            className="subgroup top-0 left-0 z-[4] absolute rounded-2xl"
+            className="subgroup top-0 left-[70px] z-[4] absolute rounded-2xl"
             style={
               scrollPercentageY >= triggerpoint
                 ? {
@@ -194,7 +194,7 @@ function RightBoxPage1(scrollPercentageY: number) {
           }
         ></div>
         <div
-          className="thebrand text-2xl md:text-3xl lg:text-8xl text-black "
+          className="thebrand text-2xl md:text-3xl lg:text-6xl text-black "
           style={{
             opacity: scrollPercentageY < lastPoint ? 0.3 : 1,
             scale: scrollPercentageY < lastPoint ? 1 : 1.5,
