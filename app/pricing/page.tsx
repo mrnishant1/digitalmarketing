@@ -167,7 +167,7 @@ const App: React.FC = () => {
   const router = useRouter();
   return (
     <section
-      className="min-h-screen bg-[#7ed6dfd9] text-gray-800 relative" // Original background color
+      className="min-h-screen bg-[#FDEAD5] text-gray-800 relative" // Original background color
     >
       <div className="text-center mb-16 px-4">
         <div
@@ -176,10 +176,10 @@ const App: React.FC = () => {
         >
           <GiReturnArrow />
         </div>
-        <h1 className="text-4xl md:text-7xl font- text-white">
+        <h1 className="text-4xl md:text-7xl font- text-[#003566]">
           LeadZup Pricing Plans
         </h1>
-        <p className="mt-2 text-xl text-indigo-200">
+        <p className="mt-2 text-xl text-gray-500">
           The Palden way to convert conversations into customers.
         </p>
       </div>
