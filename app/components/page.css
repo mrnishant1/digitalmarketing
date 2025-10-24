@@ -1,11 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface');
+/* @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface');
 
 	.abril-fatface-family {
 		font-family: "Abril Fatface", system-ui;
+	} */
+
+@import url('https://fonts.googleapis.com/css2?family=AR+One+Sans');
+
+	.ar-one-sans-family {
+		font-family: "AR One Sans", sans-serif;
 	}
 
+
 body{
-  font-family: 'Abril Fatface';
+  font-family: 'AR One Sans';
   }
 
 .wave-container span{

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -27,11 +27,15 @@ export const metadata: Metadata = {
     "personalised ads",
   ],
   authors: [{ name: "Nishant Kumar" }],
-  viewport: "width=device-width, initial-scale=1.0",
   themeColor: "#0D9488",
   other: {
     "google-site-verification": "ZU59Yq-xG2Jga0ExqdDp44yBs3CtJiUNn8BqoxRp2Xc",
   },
+};
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1.0,
+  themeColor: "#0D9488", // you can keep this here too
 };
 
 export default function RootLayout({

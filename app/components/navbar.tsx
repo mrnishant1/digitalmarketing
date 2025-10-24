@@ -10,15 +10,15 @@ export default function Navbar({ user }:{user:User|null}) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full bg-[#464242c2] rounded-2xl flex justify-between items-center px-6 py-3 z-[100] relative">
+    <nav className="w-full rounded-2xl flex justify-between items-center px-6 py-3 z-[100] relative">
       {/* Brand */}
-      <div className="text-4xl md:text-6xl font-sans font-bold text-white">
+      <div className="text-4xl md:text-6xl font-sans font-bold text-[#003566] ">
         LeadZup
       </div>
 
       {/* Hamburger button (mobile only) */}
       <button
-        className="md:hidden text-3xl text-white focus:outline-none"
+        className="md:hidden text-3xl text-[#003566] focus:outline-none"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         {menuOpen ? <FiX /> : <FiMenu />}

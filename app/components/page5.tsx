@@ -60,7 +60,7 @@ const ProcessCard = ({
 
   return (
     <div
-      className="flex flex-col p-6 bg-[#708F92] rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-1 overflow-hidden"
+      className="flex flex-col p-6 bg-[#FDEAD5] rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-1 overflow-hidden"
       style={{ maxHeight: "100%" }}
     >
       <div
@@ -72,13 +72,13 @@ const ProcessCard = ({
       <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
 
       <p
-        className={`text-gray-50 text-xs lg:text-xl font-sans leading-relaxed transition-all duration-300`}
+        className={`text-gray-500 text-xs lg:text-xl font-sans leading-relaxed transition-all duration-300`}
       >
         {description}
       </p>
 
       <button
-        className="text-sm text-white mt-3 underline md:hidden">
+        className="text-sm text-gray-500 mt-3 underline md:hidden">
       </button>
     </div>
   );

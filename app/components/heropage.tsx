@@ -24,7 +24,7 @@ export default function Homepage() {
   }, []); // run only once
 
   return (
-    <div className="min-h-screen relative w-[100%] h-[100%] text-white flex flex-col p-3.5">
+    <div className="min-h-screen relative w-[100%] h-[100%] text-gray-200 flex flex-col p-3.5">
       {/* Book trial */} {/* Get started button */}
       <div className="w-[100vw] h-[100vh] absolute left-0 top-0 flex justify-center items-center">
         {visibility && user === null && (
@@ -36,9 +36,10 @@ export default function Homepage() {
       {/* Home page */}
       <div className="relative flex w-full h-full ">
         <div className="relative w-[100%] h-[100%] flex flex-col items-start p-x-[16] pt-2.5">
-         
-          <div className="relative w-[100%] h-[100%] lg:h-[90%] lg-[80%] lg:absolute  right-[-100px] z-20"
-          style={{pointerEvents:'none'}}>
+          <div
+            className="relative w-[100%] h-[100%] lg:h-[90%] lg-[80%] lg:absolute  right-[-100px] z-20"
+            style={{ pointerEvents: "none" }}
+          >
             {/* Girl image section */}
             <Image
               src="/girloutpost.png"
@@ -48,7 +49,7 @@ export default function Homepage() {
               style={{
                 filter: "drop-shadow(6px 2px 2px black)",
                 objectPosition: "right", // sticks image to right
-                pointerEvents: 'none'
+                pointerEvents: "none",
               }}
             />
             {/* reach */}
@@ -65,27 +66,28 @@ export default function Homepage() {
           <Conversation />
 
           {/* Center Attraction */}
-          <div className="w-[100%] h-[90%] flex flex-col gap-3.5  bg-[#708F92] rounded-4xl p-[5%] border-2 border-black">
+          <div className="w-[100%] h-[90%] flex flex-col gap-3.5   rounded-4xl p-[5%] border-black">
             {/* Below LeadZup */}
             <div className="w-full h-full relative flex flex-col md:flex-row items-center justify-between rounded-4xl p-6 md:p-8">
               {/* Left */}
               <div className="flex flex-col gap-4 text-center md:text-left md:gap-5">
-                <div className="text-white">
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-8xl font-bold leading-tight">
-                    We
+                <div className="text-[#003566]">
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-6xl font-bold leading-tight">
+                    We Provide engagement
                   </h1>
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-8xl font-bold leading-tight">
-                    Convert
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-6xl font-bold leading-tight">
+                    Ads that talk
                   </h1>
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-8xl font-bold leading-tight">
-                    Conversation
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-6xl font-bold leading-tight">
+                    to customers
                   </h1>
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-8xl font-bold leading-tight">
-                    INTO Customers
+                  <h1 className="text-xl sm:text-2xl md:text-3xl xl:text-3xl text-gray-500 font-bold leading-tight">
+                    Hire us as your personal talking Bill board...
                   </h1>
 
-                  <p className="font-sans text-base sm:text-lg md:text-xl max-w-md mx-auto md:mx-0 mt-4 text-[#eaeaea] leading-relaxed">
-                    Attract the customers, not the crowd.
+                  <p className="font-sans text-base sm:text-lg md:text-xl max-w-md mx-auto md:mx-0 mt-4 text-gray-500 leading-relaxed">
+                    Your current Ads model is great but Not effective as
+                    personalised Ads model.
                   </p>
                 </div>
 
@@ -110,19 +112,19 @@ export default function Homepage() {
                 <div className="flex justify-center md:justify-start space-x-6 items-center mt-6 z-[100]">
                   <a
                     href="#"
-                    className="p-2 hover:bg-[#433E3F] hover:text-white rounded-full transition-all duration-300"
+                    className="p-2 hover:bg-[#272626] text-gray-500 hover:text-white rounded-full transition-all duration-300"
                   >
                     <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
                   </a>
                   <a
                     href="#"
-                    className="p-2 hover:bg-[#433E3F] hover:text-white rounded-full transition-all duration-300"
+                    className="p-2 hover:bg-[#272626] text-gray-500 hover:text-white rounded-full transition-all duration-300"
                   >
                     <Facebook className="w-5 h-5 sm:w-6 sm:h-6" />
                   </a>
                   <a
                     href="#"
-                    className="p-2 hover:bg-[#433E3F] hover:text-white rounded-full transition-all duration-300"
+                    className="p-2 hover:bg-[#272626] text-gray-500 hover:text-white rounded-full transition-all duration-300"
                   >
                     <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
                   </a>
