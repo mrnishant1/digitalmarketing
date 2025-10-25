@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Linkedin, Facebook, Instagram } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 import Image from "next/image";
 import "./page.css";
 import Conversation from "./3dbackground/conversation";
@@ -13,11 +13,11 @@ export default function Homepage() {
   const [user, setuser] = useState<User | null>(null);
 
   useEffect(() => {
-    console.log(
-      "useeffect ran in setiser heropage----------------------------"
-    );
+    // console.log(
+    //   "useeffect ran in setiser heropage----------------------------"
+    // );
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
+      // console.log(currentUser);
       setuser(currentUser);
     });
     return () => unsubscribe(); // cleanup
@@ -111,19 +111,13 @@ export default function Homepage() {
                 {/* Social */}
                 <div className="flex justify-center md:justify-start space-x-6 items-center mt-6 z-[100]">
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/leadzup-a19605390/"
                     className="p-2 hover:bg-[#272626] text-gray-500 hover:text-white rounded-full transition-all duration-300"
                   >
                     <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
                   </a>
                   <a
-                    href="#"
-                    className="p-2 hover:bg-[#272626] text-gray-500 hover:text-white rounded-full transition-all duration-300"
-                  >
-                    <Facebook className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </a>
-                  <a
-                    href="#"
+                    href="https://www.instagram.com/lead_zup/"
                     className="p-2 hover:bg-[#272626] text-gray-500 hover:text-white rounded-full transition-all duration-300"
                   >
                     <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />

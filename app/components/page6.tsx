@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import useNotification from "@/components/ui/usenotification";
 
 export default function Page6() {
   const [formData, setformData] = useState({
@@ -7,24 +8,27 @@ export default function Page6() {
     email: "",
     message: "",
   });
+  const { MessageRenderer, pushMessage } = useNotification();
+  
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>){
     setformData((prev)=>({...prev,[e.target.name]:e.target.value}))
   }
   async function handleSubmit(){
-
     const response= await axios.post('/API/send-mail',{fullname:formData.fullname, email:formData.email, message: formData.message})
     if(response.status===200){
       setformData({fullname:"", email:"", message:""})
-      alert("message sent")
+      pushMessage("Message Sent")
     }
     else{
-      alert("something went wrong, please try again")
+      pushMessage("something went wrong, please try again")
     }
   }
   return (
-    <div className="text-gray-100 px-8 py-12" id="contactform">
-      
+    <div className="text-gray-100 px-8 py-12 relative" id="contactform">
+      <div className="top-0 right-0 absolute">
+        <MessageRenderer/>
+      </div>
       <div className="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-[#FDEAD5] text-gray-900 rounded-lg shadow-lg">
         <div className="flex flex-col justify-between">
           <div>

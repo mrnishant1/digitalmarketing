@@ -1,5 +1,6 @@
 import { LiaHeart, LiaComment } from "react-icons/lia";
 import { FaTelegram } from "react-icons/fa";
+import './uicomponents.css'
 export function PostCard({Text}:{Text:string}) {
   return (
     <>
@@ -72,6 +73,15 @@ export function ReplyCard({reply}: {reply:string}) {
         >
           {reply}
         </div>
+      </div>
+    </>
+  );
+}
+export function Notification({ message }: { message: string }) {
+  return (
+    <>
+      <div className="notification w-[500px] h-[70px] text-white sm:text-xs lg:text-xl rounded-2xl border-2 border-amber-50 flex justify-center items-center bg-[#4C4665]">
+        {message}
       </div>
     </>
   );

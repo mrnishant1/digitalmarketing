@@ -6,9 +6,12 @@ import Loading from "./loading";
 import Image from "next/image";
 import { firebaseDB } from "../signin/firebaseconfig";
 import { auth } from "../signin/firebaseconfig";
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { GiReturnArrow } from "react-icons/gi";
 import { useRouter } from "next/navigation";
+import useNotification from "@/components/ui/usenotification";
+import axios from "axios";
+// import sendMail from "../components/sendMail";
 
 const ProfileSection = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -17,6 +20,7 @@ const ProfileSection = () => {
   const [userExistance, setUserExistance] = useState<boolean>(false);
   const [isMarketingStarted, setMarketingStarted] = useState<boolean>(false);
   const router = useRouter();
+  const { MessageRenderer, pushMessage } = useNotification();
 
   const [user, setUser] = useState({
     fullname: "",
@@ -29,6 +33,7 @@ const ProfileSection = () => {
     isMarketingStarted: false,
     seowords: [],
   });
+  
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (curr) =>
@@ -83,7 +88,8 @@ const ProfileSection = () => {
       : "bg-green-500 hover:bg-green-600";
 
   const submitHandler = async (e: React.FormEvent) => {
-    console.log("submit handler clicked");
+
+    // console.log("submit handler clicked");
     if (currentUser === null || !firebaseDB) {
       console.log("curren user is null or firebasDB is");
       return;
@@ -93,7 +99,7 @@ const ProfileSection = () => {
       //Fire DB base works> (databasereference, collection, documents, fields)
       await setDoc(doc(firebaseDB, "users", currentUser.uid), user);
       setUserExistance(() => true);
-      alert("Profile Has been updated");
+      pushMessage("Profile Has been updated");
     }
     setIsTrialActive(() => true);
     console.log("Updated user:", user);
@@ -102,15 +108,20 @@ const ProfileSection = () => {
  const isMarketingStartedHandler= async () => {
     if(userExistance===true){
       console.log('user exist and trying to get marketing starrted')
-      const userRef =  doc(firebaseDB, "users", currentUser.uid);
-      await updateDoc(userRef, {isMarketingStarted: true})
-      setMarketingStarted(()=> true);
-      console.log("Marketing started...")
+      // const userRef =  doc(firebaseDB, "users", currentUser.uid);
+      // await updateDoc(userRef, {isMarketingStarted: true})
+      // setMarketingStarted(()=> true);
+      pushMessage("We are currently in Beta mode, Our team will soon try to contact you")
+      if(currentUser.email)
+        await axios.post('/API/send-mail',{fullname:currentUser.displayName, email:currentUser.email, message:"is trying to start marketing"})
     }
   }
 
   return (
     <div className="max-w-5xl mx-auto p-6 sm:p-10 bg-gray-50 min-h-screen">
+      <div className="top-0 right-0 absolute">
+      <MessageRenderer/>
+      </div>
       <div
         className="p-[20px] text-7xl text-gray-600 top-0 left-0 z-[1] absolute cursor-pointer active:scale-[0.95] "
         onClick={() => router.back()}

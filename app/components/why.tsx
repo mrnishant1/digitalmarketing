@@ -14,14 +14,30 @@ const Why = () => {
         />
       </div>
       {/* right */}
-      <div className="w-full h-full justify-start space-y-[4%] flex flex-col p-4">
+      <div className="w-full h-full flex flex-col justify-start space-y-[4%] p-4">
         <h1 className="text-red-400 text-xs md:text-xl">About LeadZup</h1>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-[#003566]">What problem do we solve? <br /><span> Why You Need LeadZup & its targated Marketing Services</span></h1>
-        <div className=" pl-[10%] space-y-[3%]">
-            <li className=" text-xl md:text-2xl lg:text-3xl text-gray-500">We Don't spam Ads like conventional Ads.</li>
-            <li className=" text-xl md:text-2xl lg:text-3xl text-gray-500">We are your talking bot.</li>
-            <li className=" text-xl md:text-2xl lg:text-3xl text-gray-500">We targates user who are in search of Products you provides</li>
-            <li className=" text-xl md:text-2xl lg:text-3xl text-gray-500">We then help them finding your products</li>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl text-[#003566]">
+          What problem do we solve?
+          <br />
+          <span>Why you need LeadZup & its targeted marketing services</span>
+        </h1>
+
+        <div className="pl-[10%] space-y-[3%]">
+          <p className="text-gray-700 text-base md:text-lg">
+            LeadZup focuses on personalized Reddit marketing that connects your
+            brand directly with users who are already searching for what you
+            offer.
+          </p>
+
+          <ul className="list-disc space-y-2 text-xl md:text-2xl lg:text-3xl text-gray-500">
+            <li>We don’t spam users with generic ads.</li>
+            <li>We act as your conversational marketing bot.</li>
+            <li>
+              We reach users who are actively looking for your products or
+              services.
+            </li>
+            <li>We guide them toward discovering your brand naturally.</li>
+          </ul>
         </div>
       </div>
     </div>

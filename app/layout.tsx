@@ -1,17 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AR_One_Sans } from "next/font/google";
+// import { ThemeColorDescriptor } from "next/dist/lib/metadata/types/metadata-types";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 const arOneSans = AR_One_Sans({
   subsets: ['latin'],
@@ -32,8 +33,10 @@ export const metadata: Metadata = {
     "marketing agency",
     "personalised ads",
   ],
+  icons: {
+    icon: "/favicon.jpg",
+  },
   authors: [{ name: "Nishant Kumar" }],
-  themeColor: "#0D9488",
   other: {
     "google-site-verification": "ZU59Yq-xG2Jga0ExqdDp44yBs3CtJiUNn8BqoxRp2Xc",
   },
@@ -42,6 +45,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1.0,
   themeColor: "#0D9488", // you can keep this here too
+
 };
 
 export default function RootLayout({

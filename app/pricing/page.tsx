@@ -3,6 +3,7 @@ import React from "react";
 import "./page.css";
 import { GiReturnArrow } from "react-icons/gi";
 import { useRouter } from "next/navigation";
+import useNotification from "@/components/ui/usenotification";
 
 // --- Interfaces for Type Safety ---
 
@@ -99,6 +100,7 @@ const WaveDecoration: React.FC<WaveDecorationProps> = ({ groupHoverClass }) => {
 // --- Pricing Card Component ---
 const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
   const { title, price, features, highlight, color } = plan;
+  const { MessageRenderer, pushMessage } = useNotification();
 
   // Conditional classes for the featured item
   const itemClasses = highlight
@@ -117,54 +119,64 @@ const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
 
   // The 'group/item' class makes the whole card the parent for hover state
   return (
-    <div
-      className={`pricing-item group/item flex flex-col hover:scale-[1.07] items-stretch text-center flex-1 w-full max-w-xs md:max-w-md lg:max-w-[330px] shadow-xl rounded-2xl m-4 bg-white text-[#84697c] font-[Open_Sans] transition-all duration-300 ${itemClasses}`}
-    >
-      {/* Pricing Decoration Area */}
-      <div
-        className={`pricing-deco relative ${color} pb-[40%] pt-[5%] rounded-t-2xl`}
-      >
-        <WaveDecoration groupHoverClass={groupHoverClasses} />
-
-        {/* Price */}
-        <div className="text-[#241e2f] mt-1 mb-1 leading-tight">
-          <span className="text-sm align-top text-white"> $ </span>
-          <span className="text-7xl font-bold">{price}</span>
-          {/* <span className="text-sm pl-2  italic text-">/ mo</span> */}
-        </div>
-
-        {/* Title */}
-        <h3 className="text-xs uppercase tracking-[5px] text-white mt-0">
-          {title}
-        </h3>
+    <>
+      {/* Notification */}
+      <div className="absolute top-0 right-0 flex flex-col gap-5 z-[1000] p-[1%]">
+        <MessageRenderer />
       </div>
 
-      {/* Feature List */}
-      <ul className="flex-grow list-none p-0 text-center mx-auto w-full">
-        {features.map((feature, index) => (
-          <li
-            key={index}
-            className="px-8 py-4 border-b border-gray-100 last:border-b-0 text-gray-700"
-          >
-            {feature}
-          </li>
-        ))}
-      </ul>
-
-      {/* Action Button */}
-      <button
-        className={`font-bold mx-12 my-8 py-3 px-6 text-white rounded-full transition-colors duration-300 ${buttonClasses} hover:shadow-lg`}
-        onClick={()=>console.log(features[0].split(" ")[1])}
+      <div
+        className={`pricing-item group/item flex flex-col hover:scale-[1.07] items-stretch text-center flex-1 w-full max-w-xs md:max-w-md lg:max-w-[330px] shadow-xl rounded-2xl m-4 bg-white text-[#84697c] font-[Open_Sans] transition-all duration-300 ${itemClasses}`}
       >
-        {features[0]}
-      </button>
-    </div>
+        {/* Pricing Decoration Area */}
+        <div
+          className={`pricing-deco relative ${color} pb-[40%] pt-[5%] rounded-t-2xl`}
+        >
+          <WaveDecoration groupHoverClass={groupHoverClasses} />
+
+          {/* Price */}
+          <div className="text-[#241e2f] mt-1 mb-1 leading-tight">
+            <span className="text-sm align-top text-white"> $ </span>
+            <span className="text-7xl font-bold">{price}</span>
+            {/* <span className="text-sm pl-2  italic text-">/ mo</span> */}
+          </div>
+
+          {/* Title */}
+          <h3 className="text-xs uppercase tracking-[5px] text-white mt-0">
+            {title}
+          </h3>
+        </div>
+
+        {/* Feature List */}
+        <ul className="flex-grow list-none p-0 text-center mx-auto w-full">
+          {features.map((feature, index) => (
+            <li
+              key={index}
+              className="px-8 py-4 border-b border-gray-100 last:border-b-0 text-gray-700"
+            >
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        {/* Action Button */}
+        <button
+          className={`font-bold mx-12 my-8 py-3 px-6 text-white rounded-full transition-colors duration-300 ${buttonClasses} hover:shadow-lg`}
+          onClick={() => {
+            pushMessage("Payment gatway yet to implement, Please Contact Us! ");
+          }}
+        >
+          {features[0]}
+        </button>
+      </div>
+    </>
   );
 };
 
 // --- Main App Component ---
 const App: React.FC = () => {
   const router = useRouter();
+
   return (
     <section
       className="min-h-screen bg-[#FDEAD5] text-gray-800 relative" // Original background color

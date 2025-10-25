@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function Page4() {
   const [scrollPercentageY, setscrollPercentageY] = useState<number>(0);
   const [resizedScreen, setresizedScreen] = useState<number>(0);
-  console.log(scrollPercentageY);
+  // console.log(scrollPercentageY);
 
   useEffect(() => {
     setresizedScreen(window.innerWidth);
@@ -212,7 +212,6 @@ function RightBoxPage1(scrollPercentageY: number) {
           className="thebrand text-2xl md:text-3xl lg:text-6xl text-black "
           style={{
             opacity: scrollPercentageY < lastPoint ? 0.3 : 1,
-            scale: scrollPercentageY < lastPoint ? 1 : 1.5,
             transition: "all",
             transitionDuration: "1s",
             zIndex: 50,
