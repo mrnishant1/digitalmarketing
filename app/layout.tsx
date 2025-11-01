@@ -10,7 +10,7 @@ const arOneSans = AR_One_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "LeadZup - Your Digital Solutions Hub",
+  title: "LeadZup - Personalised marketing Hub",
   description:
     "LeadZup provides inovative advertisement solution to the Brands, we work on personalsed advertisement ads modal, we monitor reddit like forums for 24x7, looking for the users that are in need of products that Brands provides we help Brands products to position them into conversation and pitch the products to user.",
   keywords: [

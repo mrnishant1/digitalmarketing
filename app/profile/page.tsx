@@ -123,7 +123,7 @@ const ProfileSection = () => {
       <MessageRenderer/>
       </div>
       <div
-        className="p-[20px] text-7xl text-gray-600 top-0 left-0 z-[1] absolute cursor-pointer active:scale-[0.95] "
+        className="p-[20px] lg:text-7xl md:text-5xl text-3xl text-gray-600 top-0 left-0 z-[1] absolute cursor-pointer active:scale-[0.95] "
         onClick={() => router.back()}
       >
         <GiReturnArrow />

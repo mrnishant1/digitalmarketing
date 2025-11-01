@@ -31,23 +31,37 @@ const Trialpage = ({
         <div className="w-full h-full flex md:flex-row flex-col justify-center items-center overflow-hidden rounded-2xl">
           {/* left */}
           <div className="relative w-full h-full ">
-            <Image src="/getstart.png" alt="getstart" fill className="object-cover" loading="eager" />
+            <Image
+              src="/getstart.png"
+              alt="getstart"
+              fill
+              className="object-cover"
+              loading="eager"
+            />
           </div>
 
           {/* Right */}
           <div className="w-full text-[#2A3E40] h-[80%] lg:h-full space-y-1 md:space-y-3 lg:space-y-5 flex flex-col p-4.5 bg-[#FEA13A]">
             {/* GEt started */}
             <>
-              <h1 className="lg:text-7xl md:text-4xl text-2xl z-[10]">Lift off</h1>
-              <h2 className="lg:text-7xl md:text-4xl text-2xl z-[10]">
-                Your brand’s flight begins here.....
+              <h1 className="lg:text-6xl md:text-4xl text-2xl z-[10]">
+                Lift off
+              </h1>
+              <h2 className="lg:text-6xl md:text-4xl text-2xl z-[10]">
+                Your <br />
+                Marketing begins here.....
               </h2>
-              <h1 className="lg:text5xl md:text-3xl text-2xl z-[10]">
-                50 Free <span className="g:text5xl md:text-3xl text-2xl text-[#ebe5e5]">credit</span>
+              <br />
+              <h1 className="lg:text-4xl md:text-3xl text-md font-bold z-[10] text-white">
+                Join the <span className="text-[#ff3636]">Early Beta</span> —
+                Get <span className="text-[#ff3636]">50 Free Credits</span>{" "}
+                <br />
+                and Exclusive Rewards for Founding Users.
               </h1>
-              <h1 className="text-xs md:text-2xl font-sans text-white z-[10]">
-                Free Trial SignUp bonus, Try It Now.
-              </h1>
+              <h2 className="text-xs md:text-2xl font-sans text-[#f1f1f1] mt-4 z-[10]">
+                Limited spots. Your trial bonus is waiting — start now.
+              </h2>
+
               <button
                 className="text-xs md:text-2xl font-sans bg-[#dee4e5] rounded-4xl p-2.5  hover:scale-[1.05] active:scale-[0.95] transition-all duration-200"
                 onClick={() => {

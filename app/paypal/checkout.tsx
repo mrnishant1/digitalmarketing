@@ -57,7 +57,7 @@ export default function Checkout({ title }: { title: string }) {
     }
   }
 
-  //@ts-ignore
+  //@ts-expect-error   I was just annoyed will find it when code broke
   async function onApprove(data, actions) {
     try {
       console.log("order reached to onApprove " + data.orderID);

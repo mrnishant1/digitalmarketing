@@ -1,9 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./page.css";
 import { GiReturnArrow } from "react-icons/gi";
 import { useRouter } from "next/navigation";
 import useNotification from "@/components/ui/usenotification";
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { auth } from "../signin/firebaseconfig";
 // import axios from "axios";
 // import Checkout from "../paypal/checkout";
 
@@ -99,24 +103,29 @@ const WaveDecoration: React.FC<WaveDecorationProps> = ({ groupHoverClass }) => {
   );
 };
 
-async function handlePurchase(
-  title: string,
-  pushMessage: (message: string) => void
-) {
-  // const res = await axios.post('/API/create-order',{title})
-  // if(res.status===200){
-  //   pushMessage(res.data.message)
-  // }
-  // else{
-  //   alert("fix it")
-  // }
-}
+// async function handlePurchase(
+//   title: string,
+//   pushMessage: (message: string) => void
+// ) {
+//   // const res = await axios.post('/API/create-order',{title})
+//   // if(res.status===200){
+//   //   pushMessage(res.data.message)
+//   // }
+//   // else{
+//   //   alert("fix it")
+//   // }
+// }
 
 // --- Pricing Card Component ---
 const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (curr) => setuser(curr));
+    return () => unsubscribe();
+  }, []);
   const { title, price, features, highlight, color } = plan;
   const { MessageRenderer, pushMessage } = useNotification();
-  const [check, setcheck] = useState(false);
+  // const [check, setcheck] = useState(false);
+  const [user, setuser] = useState<User | null>(null);
 
   // Conditional classes for the featured item
   const itemClasses = highlight
@@ -137,7 +146,7 @@ const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
   return (
     <>
       {/* Notification */}
-      <div className="absolute top-0 right-0 flex flex-col gap-5 z-[1000] p-[1%]">
+      <div className="fixed bottom-5 right-5 z-[1000]">
         <MessageRenderer />
       </div>
 
@@ -174,18 +183,33 @@ const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
             </li>
           ))}
         </ul>
+        <li className="px-8 py-4">*Discount applicable Early starters</li>
+        <Link href={"/terms"}>*T&C</Link>
 
         {/* Action Button */}
-        <button
-          className={`font-bold mx-12 my-8 py-3 px-6 text-white rounded-full transition-colors duration-300 ${buttonClasses} hover:shadow-lg`}
-          onClick={() => {
-            pushMessage("Payment gatway yet to implement, Please Contact Us! ");
-            //  handlePurchase(title, pushMessage)
-            // setcheck(() => true);
-          }}
-        >
-          {features[0]}
-        </button>
+        <div className="flex items-center justify-around p-3">
+          <button
+            className={`font-bold m-2 py-3 px-6 text-white rounded-full transition-colors duration-300 ${buttonClasses} hover:shadow-lg flex`}
+            onClick={() => {
+              user === null
+                ? pushMessage("Please Login")
+                : pushMessage(
+                    "We’re processing early subscriptions manually for now. Message us to activate your plan right away."
+                  );
+              //  handlePurchase(title, pushMessage)
+              // setcheck(() => true);
+            }}
+          >
+            {features[0]}
+          </button>
+          <Link
+            href={`https://wa.me/918528068382?text=Hi%2C%20I%27m%20interested%20in%20joining%20LeadzUp%20as%20an%20early%20user.%20Please%20share%20details%20about%20access%20and%20rewards.`}
+            target="_blank"
+            className="lg:text-5xl md:text-3xl text-2xl"
+          >
+            <FaWhatsapp />
+          </Link>
+        </div>
 
         {/* {check && <Checkout title={title} />} */}
       </div>
@@ -203,7 +227,7 @@ const App: React.FC = () => {
     >
       <div className="text-center mb-16 px-4">
         <div
-          className="p-[20px] text-7xl absolute cursor-pointer active:scale-[0.95] "
+          className="p-[20px] lg:text-7xl md:text-5xl text-3xl left-0 top-0 absolute cursor-pointer active:scale-[0.95] "
           onClick={() => router.back()}
         >
           <GiReturnArrow />

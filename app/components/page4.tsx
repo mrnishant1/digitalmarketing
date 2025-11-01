@@ -264,7 +264,7 @@ function RightBoxPage2(scrollPercentageY: number) {
               : { opacity: 0 }
           }
         >
-          {Messages(scrollPercentageY, triggerpoint, lastpoint)}
+          {Messages(scrollPercentageY, triggerpoint)}
         </div>
 
         <div className="w-[95%] h-[30px] flex justify-center items-center text-[#2f2e2e] absolute bottom-[10px] bg-[#ffffff5c] rounded-2xl border-2 border-[#ffffffc5]">
@@ -322,7 +322,7 @@ function RightBoxPage3(scrollPercentageY: number, resizedscreen: number) {
 export function Messages(
   scrollPercentageY: number,
   triggerpoint: number,
-  lastPoint: number
+  // lastPoint: number
 ) {
   return (
     <div className="flex flex-col gap-2.5">

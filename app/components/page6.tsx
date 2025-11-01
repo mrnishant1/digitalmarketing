@@ -1,6 +1,8 @@
-import { useState } from "react";
+
+import { useRef, useState } from "react";
 import axios from "axios";
 import useNotification from "@/components/ui/usenotification";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Page6() {
   const [formData, setformData] = useState({
@@ -9,25 +11,38 @@ export default function Page6() {
     message: "",
   });
   const { MessageRenderer, pushMessage } = useNotification();
-  
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>){
-    setformData((prev)=>({...prev,[e.target.name]:e.target.value}))
+  const recaptchaRef = useRef(null);
+  const [token, setToken] = useState<string | null>(null);
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setformData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
-  async function handleSubmit(){
-    const response= await axios.post('/API/send-mail',{fullname:formData.fullname, email:formData.email, message: formData.message})
-    if(response.status===200){
-      setformData({fullname:"", email:"", message:""})
-      pushMessage("Message Sent")
+  async function handleSubmit() {
+    if (!recaptchaRef.current) {
+      alert("Please verify you are not a robot.");
+      return;
     }
-    else{
-      pushMessage("something went wrong, please try again")
+    //@ts-expect-error  I was just annoyed will find it when code broke
+    const recaptchaValue = recaptchaRef.current.getValue();
+    console.log(recaptchaValue);
+    const response = await axios.post("/API/send-mail", {
+      fullname: formData.fullname,
+      email: formData.email,
+      message: formData.message,
+      token: recaptchaValue,
+    });
+    if (response.status === 200) {
+      setformData({ fullname: "", email: "", message: "" });
+      pushMessage("Message Sent");
+    } else {
+      pushMessage(response.data.message);
+    
     }
+     
   }
   return (
     <div className="text-gray-100 px-8 py-12 relative" id="contactform">
       <div className="top-0 right-0 absolute">
-        <MessageRenderer/>
+        <MessageRenderer />
       </div>
       <div className="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-[#FDEAD5] text-gray-900 rounded-lg shadow-lg">
         <div className="flex flex-col justify-between">
@@ -35,10 +50,7 @@ export default function Page6() {
             <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
               Lets talk about everything!
             </h2>
-            {/* <div className="text-gray-700 mt-8">
-              Hate forms? Send us an <span className="underline">email</span>{" "}
-              instead.
-            </div> */}
+            
           </div>
           <div className="mt-8 text-center">
             <svg
@@ -1002,7 +1014,7 @@ export default function Page6() {
           className=""
           onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit()
+            handleSubmit();
           }}
         >
           <div>
@@ -1031,7 +1043,6 @@ export default function Page6() {
               name="email"
               onChange={handleChange}
               value={formData.email}
-
             />
           </div>
           <div className="mt-8">
@@ -1046,10 +1057,18 @@ export default function Page6() {
               name="message"
               onChange={handleChange}
               value={formData.message}
-
             ></input>
           </div>
           <div className="mt-8">
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+              ref={recaptchaRef}
+              onChange={(token) => {
+                // console.log("Received token:", token);
+                setToken(token);
+              }}
+            />
+            
             <button className="uppercase cursor-pointer active:scale-[0.98] shadow-2xl transition-all duration-75 text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
               Send Message
             </button>
