@@ -189,7 +189,7 @@ function RightBoxPage1(scrollPercentageY: number) {
         </div>
         {/* Line between them  */}
         <div
-          className="w-full h-[10px] md:h-[15px] lg:h-[20px] bg-red-600"
+          className="w-full h-[10px] md:h-[15px] lg:h-[20px] bg-amber-500"
           style={
             scrollPercentageY > triggerpoint + 3 &&
             scrollPercentageY < lastPoint

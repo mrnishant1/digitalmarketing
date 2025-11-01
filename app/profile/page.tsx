@@ -84,7 +84,7 @@ const ProfileSection = () => {
     displayCredits === 0 ? "Upgrade to Recharge" : "Get More Credits";
   const buttonStyle =
     displayCredits === 0
-      ? "bg-red-500 hover:bg-red-600"
+      ? "bg-red-500 hover:bg-amber-500"
       : "bg-green-500 hover:bg-green-600";
 
   const submitHandler = async (e: React.FormEvent) => {
@@ -118,7 +118,7 @@ const ProfileSection = () => {
   }
 
   return (
-    <div className="max-w-5xl mx-auto p-6 sm:p-10 bg-gray-50 min-h-screen">
+    <div className="max-w-5xl mx-auto p-6 sm:p-10 bg-gray-50 min-h-screen space-y-3.5">
       <div className="top-0 right-0 absolute">
       <MessageRenderer/>
       </div>
@@ -251,7 +251,7 @@ const ProfileSection = () => {
           <div className="mt-8 border-t pt-6 flex justify-end">
             <button
               onClick={signouthandler}
-              className="text-gray-500 hover:text-red-600 flex items-center text-sm font-medium"
+              className="text-gray-500 hover:text-amber-500 flex items-center text-sm font-medium"
             >
               <svg
                 className="w-4 h-4 mr-1"
@@ -270,6 +270,19 @@ const ProfileSection = () => {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="Analytics w-full h-[90vh] p-6 bg-white shadow-2xl rounded-2xl flex flex-col">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl text-gray-700">Analytics Dashboard</h1>
+          <div className="w-full h-full border-2 border-gray-400 rounded-2xl p-3">
+            {/* interaction */}
+            <div className="flex flex-col  rounded-2xl p-3 w-[30%] h-full">
+              <div className="text-xl md:text-2xl lg:text-3xl text-gray-700 border-2 border-gray-400 rounded-2xl p-3 ">Our Interactions</div>
+              <div className="w-full flex flex-col border-2 border-gray-200 rounded-2xl p-3 h-full"></div>
+            </div>
+
+          </div>
+          
       </div>
     </div>
   );

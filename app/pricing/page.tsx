@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import "./page.css";
 import { GiReturnArrow } from "react-icons/gi";
 import { useRouter } from "next/navigation";
 import useNotification from "@/components/ui/usenotification";
+// import axios from "axios";
+// import Checkout from "../paypal/checkout";
 
 // --- Interfaces for Type Safety ---
 
@@ -97,10 +99,24 @@ const WaveDecoration: React.FC<WaveDecorationProps> = ({ groupHoverClass }) => {
   );
 };
 
+async function handlePurchase(
+  title: string,
+  pushMessage: (message: string) => void
+) {
+  // const res = await axios.post('/API/create-order',{title})
+  // if(res.status===200){
+  //   pushMessage(res.data.message)
+  // }
+  // else{
+  //   alert("fix it")
+  // }
+}
+
 // --- Pricing Card Component ---
 const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
   const { title, price, features, highlight, color } = plan;
   const { MessageRenderer, pushMessage } = useNotification();
+  const [check, setcheck] = useState(false);
 
   // Conditional classes for the featured item
   const itemClasses = highlight
@@ -164,10 +180,14 @@ const PricingItem: React.FC<PricingItemProps> = ({ plan }) => {
           className={`font-bold mx-12 my-8 py-3 px-6 text-white rounded-full transition-colors duration-300 ${buttonClasses} hover:shadow-lg`}
           onClick={() => {
             pushMessage("Payment gatway yet to implement, Please Contact Us! ");
+            //  handlePurchase(title, pushMessage)
+            // setcheck(() => true);
           }}
         >
           {features[0]}
         </button>
+
+        {/* {check && <Checkout title={title} />} */}
       </div>
     </>
   );
@@ -179,7 +199,7 @@ const App: React.FC = () => {
 
   return (
     <section
-      className="min-h-screen bg-[#FDEAD5] text-gray-800 relative" // Original background color
+      className="min-h-screen bg-[#FDEAD5] text-gray-800 relative overflow-hidden" // Original background color
     >
       <div className="text-center mb-16 px-4">
         <div
