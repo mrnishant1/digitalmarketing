@@ -40,10 +40,10 @@ const Trialpage = ({
             <>
               <h1 className="lg:text-7xl md:text-4xl text-2xl z-[10]">Lift off</h1>
               <h2 className="lg:text-7xl md:text-4xl text-2xl z-[10]">
-                Your brand’s flight begins here.....
+                Your Marketing begins here.....
               </h2>
               <h1 className="lg:text5xl md:text-3xl text-2xl z-[10]">
-                50 Free <span className="g:text5xl md:text-3xl text-2xl text-[#ebe5e5]">credit</span>
+                Early Beta SignUps gets 100 Free <span className="lg:text4xl md:text-3xl text-2xl text-[#ebe5e5]">credit</span>
               </h1>
               <h1 className="text-xs md:text-2xl font-sans text-white z-[10]">
                 Free Trial SignUp bonus, Try It Now.
